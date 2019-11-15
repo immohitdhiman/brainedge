@@ -1,0 +1,44 @@
+ <!--  ++++ Youtube Card ++++++ -->
+              <div class=" row border bg-white  rounded mb-3">
+                <div class=" col-4 p-2 ">
+                  <img src="https://i.ytimg.com/vi/RDFU0hmFjjs/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLD7OdIaqFmJRvTV1wt6LQn_tEPfvA" 
+                  class=" w-100 rounded shadow border " alt="">
+                </div>
+                <div class=" col-8 p-2">
+                  <a href="#!" class=" text-secondary under font-weight-bold" style="text-decoration: underline;">
+                    Gurbaz Singh got his study permit for University of New Brunswick (UNB) Canada</a>
+                  <p class="blockquote-footer mt-2">7-Nov-2019
+                    </p>
+                </div>
+              </div>
+              <!--  End Of Youtube Card -->
+
+              <!--  ++++ Youtube Card ++++++ -->
+              <div class=" row border bg-white  rounded mb-3">
+                  <div class=" col-4 p-2">
+                    <img src="https://i.ytimg.com/vi/RDFU0hmFjjs/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLD7OdIaqFmJRvTV1wt6LQn_tEPfvA" 
+                    class=" w-100 rounded shadow border " alt="">
+                  </div>
+                  <div class=" col-8 p-2">
+                    <a href="#!" class=" text-secondary under font-weight-bold" style="text-decoration: underline;">
+                      Gurbaz Singh got his study permit for University of New Brunswick (UNB) Canada</a>
+                    <p class="blockquote-footer mt-2">7-Nov-2019
+                      </p>
+                  </div>
+                </div>
+                <!--  End Of Youtube Card -->
+
+                <!--  ++++ Youtube Card ++++++ -->
+              <div class=" row border bg-white rounded mb-4">
+                  <div class=" col-4 p-2">
+                    <img src="https://i.ytimg.com/vi/beA-CuSGjBQ/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLByb_xJz5_zY2O9miotCbcm1KeVTQ" 
+                    class=" w-100 rounded shadow border " alt="">
+                  </div>
+                  <div class=" col-8 p-2">
+                    <a href="#!" class=" text-secondary under font-weight-bold" style="text-decoration: underline;">
+                        Study in America with BrainEdge</a>
+                    <p class="blockquote-footer mt-2">7-Nov-2019
+                      </p>
+                  </div>
+                </div>
+                <!--  End Of Youtube Card -->
