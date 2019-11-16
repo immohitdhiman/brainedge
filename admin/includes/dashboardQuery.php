@@ -10,9 +10,7 @@ if(isset($_GET['deleteCourse'])){
     }
 }
 
-if(isset($_GET['courseID'])){
-    $courseID = $_GET['courseID'];
-    
-    
-}
+
 ?>
+
+

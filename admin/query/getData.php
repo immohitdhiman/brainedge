@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0){
                     Action
                 </button>
                 <div class='dropdown-menu' aria-labelledby='dropdownMenu1'>
-                    <a class='dropdown-item' href='?page=addCourseDetail&courseID=$id&courseName=$course''>Add Subdetail</a>
+                    <a class='dropdown-item' href='?page=addCourseDetail&addCourseID=$id&addCourseName=$course''>Add Subdetail</a>
                     <a class='dropdown-item' href='?page=editCourse&courseID=$id'>Edit</a>
                     <a class='dropdown-item' id='deleteCourse'  href='?page=admission&deleteCourse=$id'>Delete</a>
                 </div>

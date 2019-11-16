@@ -84,7 +84,8 @@ if ($sessionName == '') {
 
         </div>
     </div>
-</body>
+   
+
 
 <?php
 $pageValue = $_GET['page'];
@@ -105,7 +106,13 @@ echo "<input type='hidden' id='pageValue' value='$pageValue'> "
 
 <?php
 
-include './includes/admissionQuery.php';
+include './includes/dashboardQuery.php';
+if(isset($_GET['addCourseID']) || isset($_GET['addCourseName'])){
+   $addCourseName = $_GET['addCourseName'];
+    $addCourseID = $_GET['addCourseID'];
+    echo "<input type='hidden' value='$addCourseID' id='addCourseID' > <input type='hidden' value='$addCourseName' id='addCourseName' >";
+     
+ }
 
 
 ?>
