@@ -108,9 +108,10 @@ echo "<input type='hidden' id='pageValue' value='$pageValue'> "
 
 include './includes/dashboardQuery.php';
 if(isset($_GET['addCourseID']) || isset($_GET['addCourseName'])){
-   $addCourseName = $_GET['addCourseName'];
+    $addCourseName = $_GET['addCourseName'];
     $addCourseID = $_GET['addCourseID'];
-    echo "<input type='hidden' value='$addCourseID' id='addCourseID' > <input type='hidden' value='$addCourseName' id='addCourseName' >";
+    echo "<input type='hidden' value='$addCourseID' id='addCourseID' > 
+            <input type='hidden' value='$addCourseName' id='addCourseName' >";
      
  }
 
