@@ -141,7 +141,6 @@ function courseTable() {
     });
 };
 
-
 $("#courseTable").ready(courseTable());
 
 </script>

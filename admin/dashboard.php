@@ -101,3 +101,11 @@ echo "<input type='hidden' id='pageValue' value='$pageValue'> "
 </body>
 
 </html>
+
+
+<?php
+
+include './includes/admissionQuery.php';
+
+
+?>
