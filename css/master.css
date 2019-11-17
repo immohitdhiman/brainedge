@@ -97,13 +97,22 @@ box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
 .menu-li{
     color: #616161;
     margin: 10px 0;
+    padding: 5px 10px;
 }
 
 .menu-li:hover{
-background: rgb(236, 236, 236);
+background: rgba(236, 236, 236, 0.123);
 cursor: pointer;
-color: #000;
+color: rgb(255, 255, 255);
 
+}
+
+.menu-ul{
+    
+}
+
+.menu-li > a:hover{
+text-decoration: none;
 }
 
 .menu-li:active{

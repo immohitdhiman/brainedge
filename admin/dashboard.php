@@ -27,58 +27,81 @@ if ($sessionName == '') {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    
+    <script src="./ckeditor.js"></script>
 
 </head>
+<!-- ckeditor\ckeditor.js -->
 
 <body class="">
     <div class=" row p-0 m-0 h-100">
-        <div class=" col-2 h-100 p-2 bg-light border-right ">
+        <div class=" col-2 h-100 p-0  bg-dark ">
             <!-- <div class=" h-25 ">
            
 
         </div>  -->
-            <div>
-                <ul class=" p-2" style="list-style-type:none ;">
-                    <li class=" p-2 menu-li"><a href="?page=profile"> <i class="icofont-user-alt-3 mr-3"></i> Profile
+
+        <div class="p-3  bg-primary">
+        <p class=" p-0 m-0 text-white"><strong>DASHBOARD</strong> </p>
+        </div>
+            <div class="w-100"> 
+                <ul class="p-1 m-0 " style="  list-style-type:none ;">
+                    <li class="  menu-li"><a href="?page=profile" class="text-white"> <i class="icofont-user-alt-3 mr-3"></i> <span class="small">  Profile </small>
                         </a> </li>
-                    <li class=" p-2 menu-li"><a href="?page=admission"> <i class="icofont-list mr-3"></i> Admission </a>
+                    <li class="  menu-li"><a href="?page=admission" class="text-white"> <i class="icofont-list mr-3"></i> <span class="small">  Admission </small> </a>
                     </li>
-                    <li class=" p-2 menu-li"> <a href="?page=study_abroad"><i class="icofont-ui-flight mr-3"></i> Study
+                    <li class="  menu-li"> <a href="?page=study_abroad" class="text-white"><i class="icofont-ui-flight mr-3"></i> <span class="small">  Study </small>
                             Abroad </a></li>
-                    <li class=" p-2 menu-li"> <a href="?page=results"><i class="icofont-image mr-3"></i> Results </a>
+                    <li class="  menu-li"> <a href="?page=results" class="text-white"><i class="icofont-image mr-3"></i> <span class="small">  Results  </small></a>
                     </li>
-                    <li class=" p-2 menu-li"> <a href="?page=faq"><i class="icofont-support-faq mr-3"></i> FAQ </a></li>
+                    <li class="  menu-li"> <a href="?page=faq" class="text-white"><i class="icofont-support-faq mr-3"></i> <span class="small">  FAQ  </small></a></li>
                     <!-- <li class=" p-2 menu-li"> <a href="?page=contact"><i class="icofont-contact-add mr-3"></i> Contact </a></li> -->
-                    <li class=" p-2 menu-li"> <a href="?page=message"><i class="icofont-ui-message mr-3"></i> Messages
+                    <li class=" menu-li"> <a href="?page=message" class="text-white"><i class="icofont-ui-message mr-3"></i> <span class="small">  Messages </small>
                         </a></li>
-                    <li class=" p-2 menu-li"> <a href="?page=newsletter"><i class="icofont-newspaper mr-3"></i>
-                            Newsletters </a></li>
+                    <li class="  menu-li"> <a href="?page=newsletter" class="text-white"><i class="icofont-newspaper mr-3"></i>
+                          <span class="small">  Newsletters </small></a></li>
 
                 </ul>
             </div>
 
         </div>
 
-        <div class="  p-0 m-0 col-10 h-100" style=" overflow-y:auto;">
-            <div class=" row p-2 py-3 m-0 nav navbar bg-white sticky-top   ">
+        <div class="  p-0 m-0 bg-light col-10 h-100" style=" overflow-y:auto;">
+            <div class=" row p-2 py-3 m-0 nav navbar bg-primary sticky-top   ">
                 <div class=" col-4">
-                    <p class=" p-0 m-0 text-black-50"><strong>Welcome!</strong><?php echo $sessionName ?> </p>
+                   
                 </div>
                 <div class=" col-4">
 
                 </div>
                 <div class=" col-4 text-right">
-                    <a href="logout.php" id="logout-dashboard" class="text-danger font-weight-bold"><i
-                            class="icofont-ui-power"></i> Logout</a>
+                <div class="dropdown open">
+                <div class="dropdown">
+  <button class="btn btn-sm text-white btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="icofont-user-alt-3 mr-1"></i>  <?php  echo $sessionName; ?>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+    <!-- <a class="dropdown-item" href="#!">Profile</a> -->
+    <a class="dropdown-item" href="logout.php"><i class="icofont-power mr-1 font-weight-bold text-primary"></i> Logout</a>
+  </div>
+</div>
+
+</div>
+
+                    <!-- <a href="logout.php" id="logout-dashboard" class="text-danger font-weight-bold"><i
+                            class="icofont-ui-power"></i> Logout</a> -->
                 </div>
+            </div>
+            <div class="p-3">
+<div class="border bg-white w-100 shadow" id="main-container" >
+
+            </div>
             </div>
 
 
 
             <!-- View -->
-            <div class=" w-100" id="main-container">
-
-            </div>
+            
             <!--  End of view -->
 
 
@@ -95,9 +118,14 @@ echo "<input type='hidden' id='pageValue' value='$pageValue'> "
 
 
 
-
+<script>
+$(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 <script src="../js/master.js"></script>
 <script src="./routs.js"></script>
+
 
 </body>
 
@@ -112,8 +140,33 @@ if(isset($_GET['addCourseID']) || isset($_GET['addCourseName'])){
     $addCourseID = $_GET['addCourseID'];
     echo "<input type='hidden' value='$addCourseID' id='addCourseID' > 
             <input type='hidden' value='$addCourseName' id='addCourseName' >";
+    $_SESSION['course_id'] = $addCourseID;
      
  }
 
 
+ if(isset($_POST['submit'])){
+    $file_name = $_FILES['courseCover']['name'];
+    $file_size =$_FILES['courseCover']['size'];
+    $file_tmp =$_FILES['courseCover']['tmp_name'];
+    $file_type=$_FILES['courseCover']['type'];
+
+   $course_id = $_POST['course_id_detail'];
+    $content = $_POST['content'];
+    $courseDescription = htmlentities($content);
+   
+
+    $courseQuery = "INSERT INTO `courseDetail` (`course_id`, `courseDate`, `courseCover`, `courseDescription`) VALUES ('$course_id', CURRENT_DATE(), '$file_name', '$courseDescription')";
+    $courseResult = mysqli_query($conn, $courseQuery);
+    if($courseResult){ move_uploaded_file($file_tmp,"../images/courseCover/".$file_name);
+        echo " <script>alert('course Description Uploaded Successfully') </script>";
+    }
+    else{
+        print_r($errors);
+     }
+ }
+ 
+ 
+
+ 
 ?>

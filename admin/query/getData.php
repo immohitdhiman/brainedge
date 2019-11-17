@@ -21,7 +21,7 @@ if (mysqli_num_rows($result) > 0){
             <div class='dropdown'>
                 <button class='btn btn-link btn-sm dropdown-toggle' type='button' id='dropdownMenu1'
                     data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                    Action
+                    <i class='icofont-plus-circle font-weight-bold text-primary'></i> Action
                 </button>
                 <div class='dropdown-menu' aria-labelledby='dropdownMenu1'>
                     <a class='dropdown-item' href='?page=addCourseDetail&addCourseID=$id&addCourseName=$course''>Add Description</a>

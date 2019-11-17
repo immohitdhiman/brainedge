@@ -6,7 +6,10 @@ if(isset($_GET['deleteCourse'])){
     $deleteQuery = "DELETE FROM `courses` WHERE `id` ='$courseID' ";
     $result = mysqli_query($conn, $deleteQuery);
     if($result){
-        header("location: ?page=admission");
+        // header("location: ?page=admission");
+    }
+    else{
+        echo mysqli_error($conn);
     }
 }
 

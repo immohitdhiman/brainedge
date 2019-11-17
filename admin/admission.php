@@ -9,7 +9,7 @@ include '../includes/connection.php';
 
 <div class=" p-4">
     <div class=" row">
-        <div class=" col-6">
+        <div class="   col-6">
             <h3>Courses</h3>
         </div>
 
