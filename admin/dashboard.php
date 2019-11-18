@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_GET['page']) && isset($_GET['addCourseID'])) {
+    $course_id = $_GET['addCourseID'];
+    $course_name = $_GET['addCourseName'];
+    
+}
 include '../includes/connection.php';
 $sessionName = $_SESSION['name'];
 if ($sessionName == '') {
@@ -28,13 +33,15 @@ if ($sessionName == '') {
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     
-    <script src="./ckeditor.js"></script>
+   <!-- <script src="./ckeditor.js"></script> -->
+   <script src="./ckfinder/ckfinder.js"></script>
+   <script src="./ckeditor/ckeditor.js"></script>
 
 </head>
 <!-- ckeditor\ckeditor.js -->
 
-<body class="">
-    <div class=" row p-0 m-0 h-100">
+<body class="" style="overflow:hidden;">
+    <div class=" row p-0 m-0 h-100 " style="overflow:hidden;">
         <div class=" col-2 h-100 p-0  bg-dark ">
             <!-- <div class=" h-25 ">
            
@@ -94,7 +101,24 @@ if ($sessionName == '') {
             </div>
             <div class="p-3">
 <div class="border bg-white w-100 shadow" id="main-container" >
+<?php
+if (isset($_GET['page'])) {
+    # code...
+    $page = $_GET['page'];
+    $include_query =   glob("./$page.php");
+    if ($include_query == true) {
+        include './'.$page.'.php';
+    }
+    else{
+        include './profile.php';
+    }
+        # code...
+    }
 
+
+
+
+?>
             </div>
             </div>
 
@@ -111,8 +135,8 @@ if ($sessionName == '') {
 
 
 <?php
-$pageValue = $_GET['page'];
-echo "<input type='hidden' id='pageValue' value='$pageValue'> "
+// $pageValue = $_GET['page'];
+// echo "<input type='hidden' id='pageValue' value='$pageValue'> "
 
 ?>
 
@@ -135,38 +159,7 @@ $(function(){
 <?php
 
 include './includes/dashboardQuery.php';
-if(isset($_GET['addCourseID']) || isset($_GET['addCourseName'])){
-    $addCourseName = $_GET['addCourseName'];
-    $addCourseID = $_GET['addCourseID'];
-    echo "<input type='hidden' value='$addCourseID' id='addCourseID' > 
-            <input type='hidden' value='$addCourseName' id='addCourseName' >";
-    $_SESSION['course_id'] = $addCourseID;
-     
- }
 
-
- if(isset($_POST['submit'])){
-    $file_name = $_FILES['courseCover']['name'];
-    $file_size =$_FILES['courseCover']['size'];
-    $file_tmp =$_FILES['courseCover']['tmp_name'];
-    $file_type=$_FILES['courseCover']['type'];
-
-   $course_id = $_POST['course_id_detail'];
-    $content = $_POST['content'];
-    $courseDescription = htmlentities($content);
-   
-
-    $courseQuery = "INSERT INTO `courseDetail` (`course_id`, `courseDate`, `courseCover`, `courseDescription`) VALUES ('$course_id', CURRENT_DATE(), '$file_name', '$courseDescription')";
-    $courseResult = mysqli_query($conn, $courseQuery);
-    if($courseResult){ move_uploaded_file($file_tmp,"../images/courseCover/".$file_name);
-        echo " <script>alert('course Description Uploaded Successfully') </script>";
-    }
-    else{
-        print_r($errors);
-     }
- }
- 
- 
 
  
 ?>

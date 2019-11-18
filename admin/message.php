@@ -1,6 +1,6 @@
 <?php
 include('../includes/connection.php');
-session_start();
+
 
 
 $query = "SELECT * FROM `message`";

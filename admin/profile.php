@@ -1,8 +1,4 @@
-<?php
-session_start();
-$sessionName = $_SESSION['name'];
 
-?>
 
 <div class=" profile-cover  " style=" height:300px;  overflow: hidden; 
             background: url('https://images.unsplash.com/photo-1569025591510-a69144e20084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');

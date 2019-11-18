@@ -1,42 +1,78 @@
 <?php
-session_start();
 include '../includes/connection.php';
 
-?>
+
+if(isset($_POST['submit'])){
+   $file_name = $_FILES['courseCover']['name'];
+   $file_size =$_FILES['courseCover']['size'];
+   $file_tmp =$_FILES['courseCover']['tmp_name'];
+   $file_type=$_FILES['courseCover']['type'];
+   $content = $_POST['content'];
+   $courseDescription = htmlentities($content);
+  
+   $searchQuery = "SELECT * FROM `coursedetail` WHERE course_id ='$course_id'";
+   $search_result = mysqli_query($conn, $searchQuery);
+   if (mysqli_num_rows($search_result) > 0) {
+       # code...
+       $courseUpdate = "UPDATE `coursedetail` SET courseCover='$file_name', `courseDescription`='$courseDescription' WHERE `course_id` = '$course_id'";
+       $courseUpdateResult = mysqli_query($conn, $courseUpdate);
+       if($courseUpdateResult){
+           move_uploaded_file($file_tmp,"../images/courseCover/".$file_name);
+           ?>
 <script>
-    var addCourseID = $("#addCourseID").val();
-    var addCourseName = $("#addCourseName").val();
-    $(".courseName").text(addCourseName);
-    $(".course_id").val(addCourseID);
-    formData = { course_id: addCourseID };
-
-    // $.ajax({
-    //     type: "POST",
-    //     url: "course_detail.php",
-    //     data: formData,
-    //     dataType: "text",
-    //     success: function (response) {
-    //         $("#editor").html(response);
-    //         // alert(response);
-
-
-
-    //     },
-    //     error : function (request, error) { 
-    //         alert(error);
-    //      }
-    // });
+$(".phpQuery").addclass('text-success').removeClass('d-none').html("<strong> Data Updated .. </strong>");
 
 </script>
+
+           <?php
+        
+          
+       }
+       else{
+           echo "error ".mysqli_error($conn);
+       }
+   }
+
+   else{
+    
+
+       $courseQuery = "INSERT INTO `courseDetail` (`course_id`, `courseDate`, `courseCover`, `courseDescription`) VALUES ('$course_id', CURRENT_DATE(), '$file_name', '$courseDescription')";
+       $courseResult = mysqli_query($conn, $courseQuery);
+       if($courseResult){ 
+           move_uploaded_file($file_tmp,"../images/courseCover/".$file_name);
+           ?>
+           <script>
+           $(".phpQuery").addclass('text-success').removeClass('d-none').html("<strong> Data Uploaded .. </strong>");
+           
+           </script>
+           
+                      <?php
+          
+       }
+       else{
+           echo "error ".mysqli_error($conn);
+       }
+   }
+   
+
+ 
+ 
+}
+
+
+
+
+
+?>
 
 
 
 <div class="p-4">
-    <h3 class="courseName"></h3>
+    <h3 > <?php echo  $course_name; ?> </h3>
     <hr>
 
-    <form method="post" id="courseDetail" enctype="multipart/form-data">
-        <input type="hidden" class="form-control form-control-sm course_id" name='course_id_detail' value=''>
+    <form method="post" id="courseDetailForm" enctype="multipart/form-data">
+        <!-- <input type="hidden" class="form-control form-control-sm course_id" name='course_id_detail' value='<?php echo  $course_id; ?>'> -->
         <div class="row">
             <div class="col-12 p-2">
 
@@ -50,29 +86,23 @@ include '../includes/connection.php';
                     <div>
 
 
-
-                        <textarea name="content" id="editor" value="" style="height: 350px;">
+<p class="m-0 small phpQuery"></p>
+                 <textarea name="content" id="content" value=""   style="height: 500px;">
 
                     <?php
                  if(isset($_SESSION['course_id'])){
-                   $course_id = $_SESSION['course_id'];
                                        
                    $query = "SELECT * FROM courseDetail WHERE course_id = '$course_id'";
                    $result = mysqli_query($conn, $query);
                    if(mysqli_num_rows($result) > 0){
                        $row = mysqli_fetch_array($result);
                        $course_image_cover = $row['courseCover'];
-                       $courseDescription = html_entity_decode( $row['courseDescription'] );
-                       echo "$courseDescription ";
+                       $show_course_description_html_entity = $row['courseDescription'];
+                       $show_course_description = html_entity_decode( $row['courseDescription'] );
+                       echo " $show_course_description ";
                    }
                    }
-                   
-                  
-                                       
-
-
-
-?>
+                   ?>
                      </textarea>
 
                     </div>
@@ -88,32 +118,25 @@ include '../includes/connection.php';
 
 
     </form>
+   
 
 </div>
 <script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .catch(error => {
-            console.error(error);
-        });
+//  ClassicEditor
+//      .create( document.querySelector( '#editor' ), {
+//         // plugins: [ CKFinder],
 
+// // Enable the "Insert image" button in the toolbar.
+         
+//          ckfinder: {
+//              uploadUrl: '/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+//          },
+//         // toolbar: [ 'ckfinder', 'imageUpload', ]
+//      } )
+//      .catch( function( error ) {
+//          console.error( error );
+//      } );
+
+var editor = CKEDITOR.replace( 'content' );
+CKFinder.setupCKEditor( editor );
 </script>
-<!-- <script>
-    function submitCourseDetail() {
-        var courseCover = $("#courseCoverImage").val();
-
-        var courseDescription = $("#editor").val();
-        formData = "courseCover=" + courseCover + "$courseDescription=" + courseDescription;
-        if (courseCover == '') {
-            $("#courseCoverImage").addClass('border-danger');
-            return false;
-        }
-        else if (courseDescription == '') {
-            $("#editor").addClass('is-invalid');
-            return false;
-        }
-        else {
-
-        }
-    }
-</script> -->
